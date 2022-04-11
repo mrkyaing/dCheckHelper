@@ -12,7 +12,7 @@ public class BookingDaoImpl implements BookingDAO{
     public int updateAutoRejectAfterDueBookings(LocalDate queryDate) throws SQLException {
         DataSource dataSource = null;
         Connection connection = null;
-        String  sqlQuery="UPDATE Booking SET status='REJECT' WHERE booking_Date<=? AND status='PENDING'";
+        String  sqlQuery="UPDATE Booking SET status='REJECT',updated_date=now() WHERE booking_Date<=? AND status='PENDING'";
         PreparedStatement prepStatement = null;
         int result = 0;
         try {
